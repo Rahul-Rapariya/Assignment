@@ -1,0 +1,64 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Swagger for PrimeNumber API Specification",
+    "title": "PrimeNumber API Specification",
+    "contact": {
+      "name": "Rahul Rapariya",
+      "email": "rahulrapariya@gmail.com"
+    },
+    "version": "1"
+  },
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/bank/v1/findnumbers": {
+      "post": {
+        "operationId": "findNumbers",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "givenNumber": {
+                  "type": "integer",
+                  "description": "Number for which prime numbers need to find",
+                  "minimum": 2
+                },
+                "limit": {
+                  "type": "integer",
+                  "description": " Result Limit, max number of prime numbers which can be returned for a givenNumber",
+                  "minimum": 1
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "result with List of prime numbers",
+            "schema": {
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
